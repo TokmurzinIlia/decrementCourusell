@@ -3,16 +3,18 @@ package com.epam.rd.autotasks;
 import java.util.Arrays;
 
 public class DecrementingCarousel {
-
-    static int [] carousel;
-    boolean carouselRun;
+    //CarouselRun carouselRun;
+    int [] carousel;
+    boolean isRunning;
 
     int capacity;
     int i = 0;
     public DecrementingCarousel(int capacity) {
-
-        carousel = new int[capacity];
+        this.capacity = capacity;
+        this.carousel = new int[capacity];
+        //this.carouselRun = new CarouselRun();
     }
+
 
     public DecrementingCarousel() {
     }
@@ -20,7 +22,7 @@ public class DecrementingCarousel {
     public boolean addElement(int element){
         boolean addElement;
 
-        if (element > 0 && !carouselRun && i < carousel.length){
+        if (element > 0 && !isRunning && i < carousel.length){
             carousel[i] = element;
             i++;
             addElement = true;
@@ -33,10 +35,11 @@ public class DecrementingCarousel {
     }
 
     public CarouselRun run(){
-        //CarouselRun run = new CarouselRun();
-        if (!carouselRun){
-            carouselRun = true;
-            return new CarouselRun();
+
+        if (!isRunning){
+            CarouselRun run = new CarouselRun();
+            isRunning = true;
+            return run;
 
         }
         //throw new UnsupportedOperationException();
@@ -50,4 +53,15 @@ public class DecrementingCarousel {
                 '}';
     }
 
+    public int getI(int i) {
+        return  carousel[i];
+    }
+
+    public void setI(int i, int value) {
+        this.carousel[i] = value;
+    }
+
+    public int[] getCarousel() {
+        return carousel;
+    }
 }

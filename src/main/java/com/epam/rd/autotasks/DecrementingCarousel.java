@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class DecrementingCarousel {
     //CarouselRun carouselRun;
     int [] carousel;
-    boolean isRunning;
+    boolean isRun;
 
     int capacity;
     int i = 0;
     public DecrementingCarousel(int capacity) {
         this.capacity = capacity;
-        this.carousel = new int[capacity];
+        carousel = new int[capacity];
         //this.carouselRun = new CarouselRun();
     }
 
@@ -22,7 +22,7 @@ public class DecrementingCarousel {
     public boolean addElement(int element){
         boolean addElement;
 
-        if (element > 0 && !isRunning && i < carousel.length){
+        if (element > 0 && !isRun && i < carousel.length){
             carousel[i] = element;
             i++;
             addElement = true;
@@ -36,13 +36,10 @@ public class DecrementingCarousel {
 
     public CarouselRun run(){
 
-        if (!isRunning){
-            CarouselRun run = new CarouselRun();
-            isRunning = true;
-            return run;
-
+        if (!isRun) {
+            isRun = true;
+            return new CarouselRun();
         }
-        //throw new UnsupportedOperationException();
         return null;
     }
 

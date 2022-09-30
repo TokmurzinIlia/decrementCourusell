@@ -2,30 +2,27 @@ package com.epam.rd.autotasks;
 
 public class CarouselRun {
 
-    DecrementingCarousel carousel;
+    //DecrementingCarousel carousel;
 
-    int i;
+    int i=0;
 
     int currentValue;
 
-    public CarouselRun() {
-//        if (carousel == null){
-//        carousel = new DecrementingCarousel();}
-//        else {
-//            this.carousel = carousel;
-//        }
 
-    }
+    public int next (DecrementingCarousel carousel) {
+        if (isFinished(carousel)) {
 
-    public int next () {
-        if (carousel != null) {
-        currentValue = carousel.getI(i);
-        carousel.setI(i, currentValue--);
-        i++;}
+        return currentValue =-1;}
+        else {
+            while (carousel.getCarousel()[i %= carousel.getCarousel().length] <= 0){
+                i++;
+            }
+            currentValue = carousel.getCarousel()[i++]--;
+        }
 return currentValue;
     }
 
-    public boolean isFinished () {
+    public boolean isFinished (DecrementingCarousel carousel) {
         if (carousel != null && carousel.getCarousel().length != 0){
         for (int var: carousel.getCarousel()) {
             if (var > 0) return false;}
@@ -34,11 +31,4 @@ return currentValue;
 
     }
 
-    @Override
-    public String toString() {
-        return "CarouselRun{" +
-                "carousel=" + carousel +
-                ", i=" + i +
-                '}';
-    }
 }

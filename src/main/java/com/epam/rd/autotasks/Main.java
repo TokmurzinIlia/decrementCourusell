@@ -3,13 +3,23 @@ package com.epam.rd.autotasks;
 public class Main {
     public static void main(String[] args) {
 
-       DecrementingCarousel courusel = new DecrementingCarousel(4);
-       courusel.addElement(1);
-       courusel.addElement(2);
-       courusel.addElement(3);
-       courusel.addElement(7);
-       //CarouselRun run = courusel.run();
+        DecrementingCarousel carousel = new DecrementingCarousel(3);
 
-        System.out.println(courusel.run());
+        System.out.println(carousel.addElement(-2)); //false
+        System.out.println(carousel.addElement(0)); //false
+
+        System.out.println(carousel.addElement(2)); //true
+        System.out.println(carousel.addElement(3)); //true
+        System.out.println(carousel.addElement(1)); //true
+
+//carousel is full
+        System.out.println(carousel.addElement(2)); //false
+        CarouselRun run = carousel.run();
+
+        System.out.println(run.next(carousel)); //2
+        System.out.println(run.next(carousel)); //3
+        System.out.println(run.next(carousel)); //1
+
+
     }
 }
